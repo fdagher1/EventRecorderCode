@@ -1,0 +1,33 @@
+
+<div class='panel-body'>
+    <div class='row' style="margin-bottom:4px">
+        <div class='col-md-4'>
+            <input type='text' placeholder='Filter by' [(ngModel)]='listFilter' />
+            <button class="btn btn-primary" [routerLink]="['/eventedit', 0]">
+                New
+            </button>
+        </div>
+    </div>
+
+    <div class='has-error' *ngIf='errorMessage'>
+        {{errorMessage}}
+    </div>
+
+    <div class='table-responsive'>
+        <table class='table' *ngIf='events && events.length'>
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Event Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let event of events | pipeeventFilter:listFilter'>
+                    <td><a [routerLink]="['/eventdetail', event.id]">{{event.eventName}}</a></td>
+                    <td>{{event.eventType}}</td>
+                </tr>
+            </tbody>
+        </table>   
+    </div>
+
+</div>
