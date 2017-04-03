@@ -24,7 +24,7 @@ export class EventEditComponent implements OnInit {
     private validationMessages: { [key: string]: { [key: string]: string } };
     private genericValidator: GenericValidator;
 
-    //Variables used if an error occurs getting or updating events through the event service
+    //Variable used if an error occurs getting or updating events through the event service
     errorMessage: string;
 
     //Used for displaying successful entering of random event
