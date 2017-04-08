@@ -9,17 +9,32 @@ export class DataEvent implements InMemoryDbService {
             {
                 'id': 1,
                 'eventName': 'Yanni Concert',
-                'eventType': 'Show'
+                'eventType': 'Concert/Play'
             },
             {
                 'id': 2,
                 'eventName': 'Ski at Liberty M',
-                'eventType': 'Sports'
+                'eventType': 'Activity'
             },
             {
                 'id': 3,
                 'eventName': 'Steakhouse',
                 'eventType': 'Restaurant'
+            },
+            {
+                'id': 4,
+                'eventName': 'Circa',
+                'eventType': 'Restaurant'
+            },
+            {
+                'id': 5,
+                'eventName': 'Lisbon',
+                'eventType': 'Site'
+            },
+            {
+                'id': 6,
+                'eventName': 'San Juan',
+                'eventType': 'Site'
             }
         ];
         return { events };

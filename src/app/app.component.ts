@@ -5,7 +5,7 @@ import { ServiceAuth } from './service-auth.service';
 @Component({
   selector: 'app-root',
   template: `
-    <div class='container'>
+
         
         <div class='panel panel-primary'>
         
@@ -21,7 +21,7 @@ import { ServiceAuth } from './service-auth.service';
             <router-outlet></router-outlet>
 
         </div>
-    </div>
+
   ` 
 })
 export class AppComponent  { 
