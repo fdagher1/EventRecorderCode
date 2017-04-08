@@ -11,7 +11,7 @@ import { EventListComponent } from './eventlist.component';
 import { ServiceEventData } from './service-eventdata.service';
 import { PipeEventFilter } from './pipe-eventfilter.pipe';
 import { EventDetailComponent } from './eventdetail.component';
-import { EventEditComponent } from './eventedit.component'
+import { EventEditComponent } from './eventedit.component';
 
 //Modules
 import { SharedModule } from '../shared/shared.module';

@@ -10,18 +10,16 @@ import { ServiceAuth } from './service-auth.service';
         <div class='panel panel-primary'>
         
             <div class='panel-heading' style="overflow: hidden;">
-                <a [routerLink]="['']" style="color:white;text-decoration:none;float: left;">
-                    {{pageTitle}}
-                </a>
-                <button class="btn btn-primary btn-margin" style="float: right;" (click)="serviceauth.login()" *ngIf="!serviceauth.authenticated()">Log In</button>
-                <button class="btn btn-primary btn-margin" style="float: right;" (click)="serviceauth.logout()" *ngIf="serviceauth.authenticated() && serviceauth.userProfile">Log Out {{serviceauth.userProfile.nickname}}</button>
-                <button class="btn btn-primary btn-margin" style="float: right;" (click)="serviceauth.logout()" *ngIf="serviceauth.authenticated() && !serviceauth.userProfile">Log Out </button>
-            </div>
-            
-            <div >
-                <router-outlet></router-outlet>
+                <a [routerLink]="['']" style="color:white;text-decoration:none;margin: 20;"> {{pageTitle}} </a>
+
+                <button class="btn btn-default btn-xs" style="float: right;" (click)="serviceauth.login()" *ngIf="!serviceauth.authenticated()">Log In</button>
+                <button class="btn btn-default btn-xs" style="float: right;" (click)="serviceauth.logout()" *ngIf="serviceauth.authenticated() && serviceauth.userProfile">Log Out {{serviceauth.userProfile.nickname}}</button>
+                <button class="btn btn-default btn-xs" style="float: right;" (click)="serviceauth.logout()" *ngIf="serviceauth.authenticated() && !serviceauth.userProfile">Log Out </button>
+               
             </div>                           
             
+            <router-outlet></router-outlet>
+
         </div>
     </div>
   ` 

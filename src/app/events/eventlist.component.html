@@ -3,9 +3,6 @@
     <div class='row' style="margin-bottom:4px">
         <div class='col-md-4'>
             <input type='text' placeholder='Filter by' [(ngModel)]='listFilter' />
-            <button class="btn btn-primary" [routerLink]="['/eventedit', 0]">
-                New
-            </button>
         </div>
     </div>
 
@@ -29,5 +26,13 @@
             </tbody>
         </table>   
     </div>
+</div>
 
+<div class="panel-footer">
+    <button class="btn btn-primary" [routerLink]="['/eventedit', 0]">
+        New
+    </button>
+    <button class="btn btn-default" [routerLink]="['/about']" style="float: right">
+        About 
+    </button>
 </div>
