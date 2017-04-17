@@ -1,46 +1,102 @@
-<form class="form-horizontal"
-        novalidate
+<style>
+
+.col-xs-4, .col-xs-6, .col-xs-12 {
+    padding-left: 5px;
+    padding-right: 5px;
+    
+}
+
+.verticalspacing-5px {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+</style>
+
+<form novalidate
         (ngSubmit)="saveEvent()"
         [formGroup]="eventForm">
     <div class="panel-body">
         <fieldset>
-            <div class="form-group"
-                [ngClass]="{'has-error': displayMessage.eventName }">
-                <label class="col-md-2 control-label" for="eventNameId">
-                    Event Name
-                </label>
-
-                <div class="col-md-8">
+            <div class="form-group">          
+                <div class="col-xs-6 col-lg-6 verticalspacing-5px">
+                    <select class="form-control" 
+                            formControlName="eventType">
+                        <option value="SelectEventType" disabled>Select Event Type</option>
+                        <option *ngFor="let eventType of eventTypes" [value]="eventType">{{eventType}}</option>
+                    </select>
+                </div>
+                <div class="col-xs-6 col-lg-6 verticalspacing-5px" [ngClass]="{'has-error': displayMessage.eventName }">
                     <input class="form-control"
+                            formControlName="eventName"
                             type="text"
-                            placeholder="Name (required)"
-                            formControlName="eventName" />
-                    <span class="help-block" *ngIf="displayMessage.eventName">
-                        {{displayMessage.eventName}}
-                    </span>
+                            placeholder="Event Name (required)" />
+                    <span class="help-block" *ngIf="displayMessage.eventName">{{displayMessage.eventName}}</span>
                 </div>
             </div>
-            <div class="form-group"
-                [ngClass]="{'has-error': displayMessage.eventType }">
-                <label class="col-md-2 control-label" for="eventTypeId">
-                    Event Type
-                </label>
-        
-                <div class="col-md-8">
-                        <select class="form-control" 
-                                formControlName="eventType">
-                            <option *ngFor="let eventType of eventTypes" [value]="eventType">
-                                {{eventType}}
-                            </option>
-                        </select>
-                    <span class="help-block" *ngIf="displayMessage.eventType">
-                        {{displayMessage.eventType}}
-                    </span>
+
+            <div class="form-group">
+                <div class="col-xs-6 col-lg-6 verticalspacing-5px">
+                    <input class="form-control"
+                            formControlName="eventStart" 
+                            type="date"
+                            name="eventStart" />
+                </div>
+                <div class="col-xs-6 col-lg-6 verticalspacing-5px">
+                    <input class="form-control"
+                            formControlName="eventEnd" 
+                            type="date"
+                            name="eventEnd" />
                 </div>
             </div>
+
+            <div class="form-group col-xs-6 col-lg-6">
+                <div class="verticalspacing-5px" >
+                    <input class="form-control"
+                            formControlName="eventCity"
+                            type="text"
+                            placeholder="City Name"
+                            name="eventCity"/>
+                </div>
+                <div class="verticalspacing-5px">
+                    <input class="form-control"
+                            formControlName="eventState"
+                            type="text"
+                            placeholder="State Name"
+                            name="eventState"/>
+                </div>
+                <div class="verticalspacing-5px">
+                    <input class="form-control"
+                            formControlName="eventCountry"
+                            type="text"
+                            placeholder="Country Name"
+                            name="eventCountry"/>
+                </div>
+            </div>
+
+            <div class="form-group col-xs-6 col-lg-6">
+                <div class="verticalspacing-5px">
+                    <input class="form-control"
+                            formControlName="eventCost"
+                            type="text"
+                            placeholder="Cost"
+                            name="eventCost"/>
+                </div>
+                <div class="verticalspacing-5px">
+                    <textarea class="form-control"
+                            formControlName="eventComment"
+                            placeholder="Comments"
+                            name="eventComment"
+                            cols="20"
+                            rows="3"></textarea>
+                </div>
+            </div>
+
             <div class="has-error" *ngIf="errorMessage">
                 {{errorMessage}}
             </div>
+
         </fieldset>
     </div>
     <div class="panel-footer" style="position: fixed; bottom: 0px; width: 100%; height: 60px;">

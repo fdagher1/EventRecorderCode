@@ -20,7 +20,7 @@ export class ServiceEventData {
     getEvents (): Observable<IEvent[]> {
         return this.http.get(this.baseUrl)
                 .map(this.extractData)
-                .do(data => console.log('getEvents: ' + JSON.stringify(data)))
+                .do(data => console.log('Service: getEvents: ' + JSON.stringify(data)))
                 .catch(this.handleError);
     }
 
@@ -33,7 +33,7 @@ export class ServiceEventData {
         const url = `${this.baseUrl}/${id}`;
         return this.http.get(url)
                 .map(this.extractData)
-                .do(data => console.log('getEvent: ' + JSON.stringify(data)))
+                .do(data => console.log('Service: getEvent: ' + JSON.stringify(data)))
                 .catch(this.handleError);
     }
 
@@ -43,7 +43,7 @@ export class ServiceEventData {
 
         const url = `${this.baseUrl}/${id}`;
         return this.http.delete(url, options)
-                    .do(data => console.log('deleteEvent: ' + JSON.stringify(data)))
+                    .do(data => console.log('Service: deleteEvent: ' + JSON.stringify(data)))
                     .catch(this.handleError);
     }
 
@@ -61,7 +61,7 @@ export class ServiceEventData {
         event.id = undefined;
         return this.http.post(this.baseUrl, event, options)
                 .map(this.extractData)
-                .do(data => console.log('createEvent: ' + JSON.stringify(data)))
+                .do(data => console.log('Service: createEvent: ' + JSON.stringify(data)))
                 .catch(this.handleError);
     }
 
@@ -69,7 +69,7 @@ export class ServiceEventData {
         const url = `${this.baseUrl}/${event.id}`;
         return this.http.put(url, event, options)
                 .map(() => event)
-                .do(data => console.log('updateEvent: ' + JSON.stringify(data)))
+                .do(data => console.log('Service: updateEvent: ' + JSON.stringify(data)))
                 .catch(this.handleError);
     }
 
@@ -84,10 +84,22 @@ export class ServiceEventData {
     }
 
     initializeEvent(): IEvent {
+        let date = new Date();
+        let dateISOformat = date.toISOString();
+        let dateISOformatArray = dateISOformat.split("T");
+        let dateISOformatDateOnly = dateISOformatArray[0];
+
         return {
             id: 0,
             eventName: null,
-            eventType: null
+            eventType: "SelectEventType",
+            eventStart: dateISOformatDateOnly,
+            eventEnd: dateISOformatDateOnly,
+            eventCity: null,
+            eventState: null,
+            eventCountry: null,
+            eventCost: null,
+            eventComment: null
         };
     }
 }

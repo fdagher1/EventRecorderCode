@@ -57,6 +57,21 @@ export class EventEditComponent implements OnInit {
             },
             eventType: {
                 required: 'Event name is required.'
+            },
+            eventStart: {
+                required: 'Event start date is required.'
+            },
+            eventEnd: {
+                required: 'Event end date is required.'
+            },
+            eventCity: {
+                required: 'Event city name is required.'
+            },
+            eventState: {
+                required: 'Event state name is required.'
+            },
+            eventCountry: {
+                required: 'Event country name is required.'
             }
         };
 
@@ -68,7 +83,14 @@ export class EventEditComponent implements OnInit {
         //Create Reactive Form
         this.eventForm = this.fb.group({
             eventName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
-            eventType: ['', Validators.required]
+            eventType: ['', Validators.required],
+            eventStart: ['', Validators.required],
+            eventEnd: ['', Validators.required],
+            eventCity: ['', Validators.required],
+            eventState: ['', Validators.required],
+            eventCountry: ['', Validators.required],
+            eventCost: [''],
+            eventComment: ['']
         });
 
         //Get parameter passed through the URL and then call get event to populate sheet with event data
@@ -94,6 +116,8 @@ export class EventEditComponent implements OnInit {
         Observable.merge(this.eventForm.valueChanges, ...controlBlurs).debounceTime(800).subscribe(value => {
             this.displayMessage = this.genericValidator.processMessages(this.eventForm);
         });
+
+        
     }
 
     //When done editing the event data, unsubscribe 
@@ -124,18 +148,61 @@ export class EventEditComponent implements OnInit {
     }
 
     //Create random event object and add to view
-    generateRandomEvent(): void {
-        let gEvent: IEvent = {id: 0, eventName: "Event Name", eventType: "Activity"};
+    generateRandomEvent(): void {       
+        let gEvent: IEvent = {id: 0, eventName: "Scuba Diving", 
+                                        eventType: "Activity", 
+                                        eventStart: this.getISOString(new Date()), 
+                                        eventEnd: this.getISOString(new Date()), 
+                                        eventCity: "Bandos Island",
+                                        eventState: "Maldives",
+                                        eventCountry: "Maldvies",
+                                        eventCost:"$110",
+                                        eventComment: "Saw a small shark!"};
+
         this.eventForm.controls['eventName'].setValue(gEvent.eventName);
         this.eventForm.controls['eventName'].markAsDirty();
         this.eventForm.controls['eventType'].setValue(gEvent.eventType);
         this.eventForm.controls['eventType'].markAsDirty();
+        this.eventForm.controls['eventStart'].setValue(gEvent.eventStart);
+        this.eventForm.controls['eventStart'].markAsDirty();
+        this.eventForm.controls['eventEnd'].setValue(gEvent.eventEnd);
+        this.eventForm.controls['eventEnd'].markAsDirty();
+        this.eventForm.controls['eventCity'].setValue(gEvent.eventCity);
+        this.eventForm.controls['eventCity'].markAsDirty();
+        this.eventForm.controls['eventState'].setValue(gEvent.eventState);
+        this.eventForm.controls['eventState'].markAsDirty();
+        this.eventForm.controls['eventCountry'].setValue(gEvent.eventCountry);
+        this.eventForm.controls['eventCountry'].markAsDirty();
+        this.eventForm.controls['eventCost'].setValue(gEvent.eventCost);
+        this.eventForm.controls['eventCost'].markAsDirty();
+        this.eventForm.controls['eventComment'].setValue(gEvent.eventComment);
+        this.eventForm.controls['eventComment'].markAsDirty();
     }
 
     //Update form values with event data
     onEventRetrieved(event: IEvent): void {
         this.event = event;
-        this.eventForm.patchValue({eventName: this.event.eventName, eventType: this.event.eventType}) 
+        console.log("Component: attempting to add event: " + JSON.stringify(this.event));
+
+        this.eventForm.patchValue({ eventName: this.event.eventName, 
+                                    eventType: this.event.eventType,
+                                    eventStart: this.event.eventStart,
+                                    eventEnd: this.event.eventEnd,
+                                    eventCity: this.event.eventCity,
+                                    eventState: this.event.eventState,
+                                    eventCountry: this.event.eventCountry,
+                                    eventCost: this.event.eventCost,
+                                    eventComment: this.event.eventComment})   
+
+        console.log("done");                         
+    }
+
+    getISOString (aneventdate: Date): string {
+        let dateISOformat = aneventdate.toISOString();
+        let dateISOformatArray = dateISOformat.split("T");
+        let dateISOformatDateOnly = dateISOformatArray[0];
+        
+        return dateISOformatDateOnly;
     }
 
     //Display successful save message for 1 second, then reset form entries and navigate to form
