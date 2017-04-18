@@ -1,4 +1,3 @@
-
 <div class='panel-body'>
     <div class='row' style="margin-bottom:4px">
         <div class='col-md-4'>
@@ -20,7 +19,7 @@
             </thead>
             <tbody>
                 <tr *ngFor='let event of events | pipeeventFilter:listFilter'>
-                    <td><a [routerLink]="['/eventdetail', event.id]">{{event.eventName}}</a></td>
+                    <td><a [routerLink]="['/eventedit', event.id]">{{event.eventName}}</a></td>
                     <td>{{event.eventType}}</td>
                 </tr>
             </tbody>
@@ -28,7 +27,7 @@
     </div>
 </div>
 
-<div class="panel-footer" style="position: fixed; bottom: 0px; width: 100%; height: 60px;">
+<div class="panel-footer" style="position: fixed; bottom: 0px; width: 100%; height: 50px;">
     <button class="btn btn-primary" [routerLink]="['/eventedit', 0]">
         New
     </button>

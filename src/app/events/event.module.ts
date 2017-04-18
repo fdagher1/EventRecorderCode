@@ -10,7 +10,6 @@ import { DataEvent }  from './data-event';
 import { EventListComponent } from './eventlist.component';
 import { ServiceEventData } from './service-eventdata.service';
 import { PipeEventFilter } from './pipe-eventfilter.pipe';
-import { EventDetailComponent } from './eventdetail.component';
 import { EventEditComponent } from './eventedit.component';
 
 //Modules
@@ -22,7 +21,6 @@ import { SharedModule } from '../shared/shared.module';
         RouterModule.forChild([
             {path: '', component: EventEditComponent },
             {path: 'eventlist', component: EventListComponent},
-            {path: 'eventdetail/:id', component: EventDetailComponent},
             {path: 'eventedit/:id', component: EventEditComponent},
             {path: '**', component: EventListComponent }
         ]),
@@ -31,7 +29,6 @@ import { SharedModule } from '../shared/shared.module';
     declarations: [       
         EventListComponent,
         PipeEventFilter,
-        EventDetailComponent,
         EventEditComponent
     ],
     providers: [

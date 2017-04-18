@@ -22,15 +22,20 @@ Code repository for EventRecorder
 13 - Debugger for Chrome (VS code addin) updated to v 3.0.1
 14 - Auto Close Tag (VS code addin) updated to v 0.3.11
 
+**v0.3.1**
+15 - Set top ribbon as position: fixed
+16 - Using Event Edit for both viewing and editing the event (removed event details component)
+
+**v0.3.2(not released yet)**
 
 **Future plans**
 Bug fixes:
 Fix issue where after saving an event, the form controls are all blank
 Enhancement:
-Use Event Edit for both viewing and editing the event (remove event details component)
+Add auto-fill for country text box
 Update Service class to merge Update and Create event functions into the Save event function (for ease of flow)
 Exclude the out folder from the git repo (is node_modules excluded already?)
-Set top ribbon as fixed
+
 Modify eventedit.html layout to look more user friendly. Add lables for some entries? 
 Add individual symbols for each input control to indicate it has valid data (bootstrap guide shows how)
 Add route guards

@@ -9,7 +9,7 @@ import { ServiceAuth } from './service-auth.service';
         
         <div class='panel panel-primary'>
         
-            <div class='panel-heading' style="overflow: hidden;">
+            <div class='panel-heading' style="position: fixed; width: 100%; height: 40px; margin-top: 0px; z-index: 1;">
                 <a [routerLink]="['']" style="color:white;text-decoration:none;margin: 20;"> {{pageTitle}} </a>
 
                 <button class="btn btn-default btn-xs" style="float: right;" (click)="serviceauth.login()" *ngIf="!serviceauth.authenticated()">Log In</button>
@@ -18,7 +18,9 @@ import { ServiceAuth } from './service-auth.service';
                
             </div>                           
             
-            <router-outlet></router-outlet>
+            <<div style="margin-top: 20px; z-index: -1">
+              <router-outlet></router-outlet>
+            </div>
 
         </div>
 

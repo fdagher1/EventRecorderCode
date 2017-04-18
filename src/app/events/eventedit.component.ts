@@ -33,6 +33,9 @@ export class EventEditComponent implements OnInit {
     //Used to check if the eventedit view is for a new event or edit event
     eventIdFromRouter: number;
 
+    //Used to check if form is in View or Edit Mode
+    editMode: boolean = false;
+
     //Variable used to create the form and bind to data 
     eventForm: FormGroup;
     event: IEvent;
@@ -103,6 +106,10 @@ export class EventEditComponent implements OnInit {
                 }
                 this.eventIdFromRouter = id;
                 this.getEvent(id);
+                if (id==0)
+                {
+                    this.EventEditClick();
+                }
             }
         );
     }
@@ -225,5 +232,10 @@ export class EventEditComponent implements OnInit {
                 (error: any) => this.errorMessage = <any>error
             );
         }
+    }
+
+    EventEditClick(): void {
+        this.editMode = true;
+        document.getElementsByName("formfieldset")[0].removeAttribute("disabled");
     }
 }
