@@ -1,6 +1,6 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 
-import { IEvent } from './event';
+import { IEvent } from './model-event';
 
 export class DataEvent implements InMemoryDbService {
 
@@ -8,8 +8,8 @@ export class DataEvent implements InMemoryDbService {
         let events: IEvent[] = [
             {
                 'id': 1,
-                'eventName': 'Yanni Concert',
                 'eventType': 'Concert/Play',
+                'eventName': 'Yanni Concert at Warner Theater',
                 'eventStart': '2017-04-01',
                 'eventEnd': '2017-04-01',
                 'eventCity': 'Washington DC',
@@ -20,32 +20,32 @@ export class DataEvent implements InMemoryDbService {
             },
             {
                 'id': 2,
-                'eventName': 'Ski at Liberty Mountain',
                 'eventType': 'Activity',
+                'eventName': 'Ski at Liberty Mountain',
                 'eventStart': '2016-02-03',
                 'eventEnd': '2016-02-03',
                 'eventCity': 'Littlestown',
                 'eventState': 'PA',
                 'eventCountry': 'United States',
                 'eventCost': '120',
-                'eventComment': 'Tiring but fun, nice company'
+                'eventComment': 'Fun but tiring, nice company'
             },
             {
                 'id': 3,
-                'eventName': 'Steakhouse',
                 'eventType': 'Restaurant',
+                'eventName': 'DC Steakhouse',
                 'eventStart': '2016-06-02',
                 'eventEnd': '2016-06-02',
                 'eventCity': 'Washington DC',
                 'eventState': 'DC',
                 'eventCountry': 'United States',
                 'eventCost': '138',
-                'eventComment': 'Very good food. Had to wear a suit from the restaurant'
+                'eventComment': 'Very good food. Suit required!'
             },
             {
                 'id': 4,
-                'eventName': 'Hotel Elephant',
                 'eventType': 'Hotel',
+                'eventName': 'Hotel Elephant',
                 'eventStart': '2016-01-18',
                 'eventEnd': '2016-01-21',
                 'eventCity': "Lisbon",
@@ -56,8 +56,8 @@ export class DataEvent implements InMemoryDbService {
             },
             {
                 'id': 5,
-                'eventName': 'Lisbon Sites',
                 'eventType': 'Site',
+                'eventName': 'Lisbon Sites',
                 'eventStart': '2016-01-19',
                 'eventEnd': '2016-01-19',
                 'eventCity': 'Lisbon',
@@ -68,8 +68,8 @@ export class DataEvent implements InMemoryDbService {
             },
             {
                 'id': 6,
-                'eventName': 'San Juan Sites',
                 'eventType': 'Site',
+                'eventName': 'San Juan Sites',
                 'eventStart': '2016-02-17',
                 'eventEnd': '2016-02-17',
                 'eventCity': 'San Juan',

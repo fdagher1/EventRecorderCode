@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { IEvent } from './event';
+import { IEvent } from './model-event';
 import { ServiceEventData } from './service-eventdata.service';
-import { Router } from '@angular/router';
-
 
 @Component({
     templateUrl: './eventlist.component.html'
@@ -18,14 +16,10 @@ export class EventListComponent implements OnInit {
     //This is the event model 
     events: IEvent[];
 
-    constructor (private serviceeventData : ServiceEventData,
-                    private router: Router) {
-
+    constructor (private serviceeventData : ServiceEventData) {
     }
 
     ngOnInit(): void {
-        this.serviceeventData.getEvents()
-            .subscribe(events => this.events = events, 
-            error => this.errorMessage = <any>error);
+        this.serviceeventData.getEvents().subscribe(events => this.events = events, error => this.errorMessage = <any>error);
     }
 }

@@ -11,15 +11,13 @@
     padding-bottom: 5px;
 }
 
-
 </style>
 
-<form novalidate
-        (ngSubmit)="saveEvent()"
-        [formGroup]="eventForm">
+<form (ngSubmit)="SaveFormButtonClick()" [formGroup]="eventForm" novalidate>
     <div class="panel-body">
         <fieldset name="formfieldset" disabled>
-            <div class="form-group">          
+
+            <div name="Event_Type_Name" class="form-group">          
                 <div class="col-xs-6 col-lg-6 verticalspacing-5px">
                     <select class="form-control" 
                             formControlName="eventType">
@@ -36,7 +34,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div name="Event_Start_End" class="form-group">
                 <div class="col-xs-6 col-lg-6 verticalspacing-5px">
                     <input class="form-control"
                             formControlName="eventStart" 
@@ -51,7 +49,7 @@
                 </div>
             </div>
 
-            <div class="form-group col-xs-6 col-lg-6">
+            <div name="Event_City_State_Country" class="form-group col-xs-6 col-lg-6">
                 <div class="verticalspacing-5px" >
                     <input class="form-control"
                             formControlName="eventCity"
@@ -75,7 +73,7 @@
                 </div>
             </div>
 
-            <div class="form-group col-xs-6 col-lg-6">
+            <div name="Event_Cost_Comment" class="form-group col-xs-6 col-lg-6">
                 <div class="verticalspacing-5px">
                     <input class="form-control"
                             formControlName="eventCost"
@@ -110,18 +108,18 @@
             <a *ngIf="eventIdFromRouter > 0" 
                 class="btn btn-default"
                 style="width:80px"
-                (click)="deleteEvent()">
+                (click)="DeleteButtonClick()">
                 Delete
             </a>
             <a class="btn btn-default"
                 style="width:80px"
-                (click)="gotoEventList()">
+                (click)="EventListButtonClick()">
                 EventList
             </a>
             <a *ngIf="eventIdFromRouter === 0"
                 class="btn btn-default"
                 style="width:80px"
-                (click)="generateRandomEvent()">
+                (click)="GenerateButtonClick()">
                 Generate
             </a>
             <span class='has-error' *ngIf='statusMessage'>
@@ -131,10 +129,10 @@
     </div>
 
     <div class='panel-footer' style="position: fixed; bottom: 0px; width: 100%; height: 50px;" *ngIf="!editMode">
-        <button class="btn btn-default" [routerLink]="['/eventlist']" style="width:80px">
+        <button class="btn btn-default" [routerLink]="['/list']" style="width:80px">
             Back
         </button>
-        <a class="btn btn-primary" (click)="EventEditClick()" style="width:80px;margin-left:10px">
+        <a class="btn btn-primary" (click)="EditButtonClick()" style="width:80px;margin-left:10px">
             Edit
         </a>
     </div>

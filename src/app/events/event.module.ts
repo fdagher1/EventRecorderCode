@@ -20,8 +20,8 @@ import { SharedModule } from '../shared/shared.module';
         SharedModule,
         RouterModule.forChild([
             {path: '', component: EventEditComponent },
-            {path: 'eventlist', component: EventListComponent},
-            {path: 'eventedit/:id', component: EventEditComponent},
+            {path: 'edit/:id', component: EventEditComponent},
+            {path: 'list', component: EventListComponent},
             {path: '**', component: EventListComponent }
         ]),
         InMemoryWebApiModule.forRoot(DataEvent)

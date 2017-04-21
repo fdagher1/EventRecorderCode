@@ -1,7 +1,7 @@
 export interface IEvent {
     id: number;
-    eventName: string;
     eventType: string;
+    eventName: string;
     eventStart: string;
     eventEnd: string;
     eventCity: string;

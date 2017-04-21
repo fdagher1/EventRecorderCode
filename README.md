@@ -6,7 +6,7 @@ Code repository for EventRecorder
 2 - Event Module Created
 3 - Moved lower buttons to the top
 4 - Changed eventType HTML control from input to select
-5 - Added comments
+5 - Code cleanup
 
 **v0.2.0**
 6 - Added About page
@@ -26,18 +26,24 @@ Code repository for EventRecorder
 15 - Set top ribbon as position: fixed
 16 - Using Event Edit for both viewing and editing the event (removed event details component)
 
-**v0.3.2(not released yet)**
+**v0.3.2**
+17 - Code cleanup
+18 - Bug fix: After saving an event, the form controls are no longer blank
+19 - Excluded /out folder from GIt repo
 
 **Future plans**
-Bug fixes:
-Fix issue where after saving an event, the form controls are all blank
+Bugs:
+When a browser automatically fills fields, the save button remains greyed out
+Downloading the app the first time takes a long time
+
 Enhancement:
 Add auto-fill for country text box
-Update Service class to merge Update and Create event functions into the Save event function (for ease of flow)
-Exclude the out folder from the git repo (is node_modules excluded already?)
 
 Modify eventedit.html layout to look more user friendly. Add lables for some entries? 
 Add individual symbols for each input control to indicate it has valid data (bootstrap guide shows how)
 Add route guards
 Store data in the backend: Check how to pull username or id and add to the Event model
 Add validators for some of the event attribute controls (not sure which yet)
+
+Known issues:
+Date input elements appear small on iPhone only
