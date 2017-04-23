@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, ViewChildren, ElementRef } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, FormArray, Validators, FormControlName } from '@angular/forms';
+import { FormGroup, FormControl, FormArray, Validators, FormControlName } from '@angular/forms';
 import { ActivatedRoute, Router  } from '@angular/router';
 
 import 'rxjs/add/operator/debounceTime';
@@ -13,6 +13,7 @@ import { GenericValidator } from '../shared/generic-validator';
 
 import { IEvent } from './model-event';
 import { eventTypes } from './model-event';
+import { eventCountries } from './model-event';
 import { ServiceEventData } from './service-eventdata.service';
 
 @Component ({
@@ -36,10 +37,11 @@ export class EventEditComponent implements OnInit, AfterViewInit, OnDestroy {
     //Used to check if form is in View or Edit Mode
     editMode: boolean = false;
 
-    //Variable used to create the form and bind to data 
+    //Variables used to create the form and bind to data 
     eventForm: FormGroup;
     event: IEvent;
     eventTypes = eventTypes;
+    eventCountries = eventCountries;
 
     //Get formInputElements
     @ViewChildren(FormControlName, {read: ElementRef }) formInputElements: ElementRef[];
@@ -47,49 +49,43 @@ export class EventEditComponent implements OnInit, AfterViewInit, OnDestroy {
     //Variable used to subscribe to changes in ID value in URL
     private sub: Subscription;
 
-    constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router, private serviceeventData: ServiceEventData) {
+    tempsource: string[] = [ "angola", "australia", "gabon"];
+    tempdata: string;
 
-        //Define validation messages
-        this.validationMessages = { 
-            eventType: {
-                required: 'Event name is required.'
-            },
-            eventName: { required: 'Event name is required.', minlength: 'Event name must be at least three characters', maxlength: 'Event name cannot exceed 50 characters.'
-            },
-            eventStart: {
-                required: 'Event start date is required.'
-            },
-            eventEnd: {
-                required: 'Event end date is required.'
-            },
-            eventCity: {
-                required: 'Event city name is required.'
-            },
-            eventState: {
-                required: 'Event state name is required.'
-            },
-            eventCountry: {
-                required: 'Event country name is required.'
-            }
-        };
-        this.genericValidator = new GenericValidator(this.validationMessages);
+    //Inject dependencies during object contructions
+    constructor(private route: ActivatedRoute, private router: Router, private serviceeventData: ServiceEventData) {
+        console.log("EventEditComponent Constructor");
+
     }
 
     //During initialization of this component, create the form group and form components, then get event ID from URL
     ngOnInit(): void {
-        console.log("ngOnInit");
+
+        console.log("EventEditComponent ngOnInit");
         //Create Reactive Form
-        this.eventForm = this.fb.group({
-            eventType: ['', Validators.required],
-            eventName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
-            eventStart: ['', Validators.required],
-            eventEnd: ['', Validators.required],
-            eventCity: ['', Validators.required],
-            eventState: ['', Validators.required],
-            eventCountry: ['', Validators.required],
-            eventCost: [''],
-            eventComment: ['']
-        });
+        this.eventForm = new FormGroup({ 
+            eventType: new FormControl('', [Validators.required]),
+            eventName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
+            eventStart: new FormControl('', [Validators.required]),
+            eventEnd: new FormControl('', [Validators.required]),
+            eventCity: new FormControl('', [Validators.required]),
+            eventState: new FormControl('', [Validators.required]),
+            eventCountry: new FormControl('', [Validators.required]),
+            eventCost: new FormControl('', []),
+            eventComment: new FormControl('', [])
+        })
+
+        //Define validation messages
+        this.validationMessages = { 
+            eventType: { required: 'Event name is required.' },
+            eventName: { required: 'Event name is required.', minlength: 'Event name must be at least three characters', maxlength: 'Event name cannot exceed 50 characters.' },
+            eventStart: { required: 'Event start date is required.'},
+            eventEnd: { required: 'Event end date is required.'},
+            eventCity: { required: 'Event city name is required.'},
+            eventState: {required: 'Event state name is required.'},
+            eventCountry: {required: 'Event country name is required.' }
+        };
+        this.genericValidator = new GenericValidator(this.validationMessages);
 
         //Get the event id that is passed through the URL, and then get the corresponding event to populate sheet with event data. If id=0, put sheet in edit mode
         this.sub = this.route.params.subscribe(
@@ -111,7 +107,7 @@ export class EventEditComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     ngAfterViewInit(): void {
-        console.log("ngAfterViewInit");
+        console.log("EventEditComponent ngAfterViewInit");
         // Watch for the blur event from any input element on the form.
         let controlBlurs: Observable<any>[] = this.formInputElements.map((formControl: ElementRef) => Observable.fromEvent(formControl.nativeElement, 'blur'));
 
@@ -123,7 +119,7 @@ export class EventEditComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //When done editing the event data, unsubscribe 
     ngOnDestroy(): void {
-        console.log("ngOnDestroy");
+        console.log("EventEditComponent ngOnDestroy");
         this.sub.unsubscribe();
     }
 
@@ -163,7 +159,7 @@ export class EventEditComponent implements OnInit, AfterViewInit, OnDestroy {
                                         eventEnd: (new Date()).toISOString().split("T")[0], 
                                         eventCity: "Bandos Island",
                                         eventState: "Maldives",
-                                        eventCountry: "Maldvies",
+                                        eventCountry: "Maldives",
                                         eventCost:"$110",
                                         eventComment: "Saw a small shark!"};
 
@@ -194,7 +190,7 @@ export class EventEditComponent implements OnInit, AfterViewInit, OnDestroy {
 
     //Update form values with event data
     private onEventRetrieved(event: IEvent): void {
-        //The below entryis needed, otherwise, a message "id is missing" (or the like) appears 
+        //The below entry is needed, otherwise, a message "id is missing" (or the like) appears 
         this.event = event;
 
         this.eventForm.patchValue({ eventType: event.eventType,

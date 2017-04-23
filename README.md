@@ -2,8 +2,8 @@
 Code repository for EventRecorder
 
 **v0.1.0**
-1 - Auth0 Added (github)
-2 - Event Module Created
+1 - Auth0 authentication added (github)
+2 - Created Event module
 3 - Moved lower buttons to the top
 4 - Changed eventType HTML control from input to select
 5 - Code cleanup
@@ -28,22 +28,28 @@ Code repository for EventRecorder
 
 **v0.3.2**
 17 - Code cleanup
-18 - Bug fix: After saving an event, the form controls are no longer blank
-19 - Excluded /out folder from GIt repo
+18 - Excluded /out folder from GIT repo
+19 - Bug fix: After saving an event, the form controls are no longer blank
+
+**v0.3.3**
+20 - Removed form builder (for simplicity)
+21 - Added autocomplete functionality for Country
+22 - Style changes for About page and some HTML elements
+23 - Adding sorting capability for the EventList view
+24 - Added key attributes to the EventList view
 
 **Future plans**
-Bugs:
-When a browser automatically fills fields, the save button remains greyed out
-Downloading the app the first time takes a long time
-
 Enhancement:
-Add auto-fill for country text box
-
-Modify eventedit.html layout to look more user friendly. Add lables for some entries? 
+Modify eventedit.html layout to look more user friendly (lables, etc..)
 Add individual symbols for each input control to indicate it has valid data (bootstrap guide shows how)
 Add route guards
 Store data in the backend: Check how to pull username or id and add to the Event model
 Add validators for some of the event attribute controls (not sure which yet)
+
+Bugs:
+Sorting in EventList is always done by name 
+When a browser automatically fills fields, the save button remains greyed out
+Downloading the app the first time takes a long time
 
 Known issues:
 Date input elements appear small on iPhone only

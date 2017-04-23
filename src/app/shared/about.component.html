@@ -1,14 +1,24 @@
-<form style="margin-left:2mm">
+<form style="margin: 1cm;">
     <div class="form-group">
-        <label class="control-label">Website: </label>
-        eventsrecorder.azurewebsites.net
+        <label class="control-label">Name: </label>
+        Event Recorder
     </div>
     <div class="form-group">
         <label class="control-label">Version: </label>
-        0.5
+        0.3.2
     </div>
-    <div class="form-group">
-        <label class="control-label">Author: </label>
-        FD
-    </div>
+
+    <address>
+        <strong>FDevelopment</strong><br>
+        Washington, DC<br>
+        20109<br>
+        <a href="http://eventsrecorder.azurewebsites.net">http://eventsrecorder.azurewebsites.net</a>
+    </address>
+
 </form>
+
+<div class='panel-footer' style="position: fixed; bottom: 0px; width: 100%; height: 50px;" *ngIf="!editMode">
+    <button class="btn btn-default" [routerLink]="['/list']" >
+        Back
+    </button>
+</div>

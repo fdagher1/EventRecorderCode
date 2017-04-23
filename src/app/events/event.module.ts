@@ -15,6 +15,9 @@ import { EventEditComponent } from './eventedit.component';
 //Modules
 import { SharedModule } from '../shared/shared.module';
 
+//Import NguiAutoCompleteModule 
+import { NguiAutoCompleteModule } from '@ngui/auto-complete';
+
 @NgModule ({
     imports: [
         SharedModule,
@@ -24,7 +27,8 @@ import { SharedModule } from '../shared/shared.module';
             {path: 'list', component: EventListComponent},
             {path: '**', component: EventListComponent }
         ]),
-        InMemoryWebApiModule.forRoot(DataEvent)
+        InMemoryWebApiModule.forRoot(DataEvent),
+        NguiAutoCompleteModule
     ],
     declarations: [       
         EventListComponent,

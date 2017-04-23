@@ -19,75 +19,47 @@
 
             <div name="Event_Type_Name" class="form-group">          
                 <div class="col-xs-6 col-lg-6 verticalspacing-5px">
-                    <select class="form-control" 
-                            formControlName="eventType">
+                    <select class="form-control" formControlName="eventType">
                         <option value="SelectEventType" disabled>Select Event Type</option>
                         <option *ngFor="let eventType of eventTypes" [value]="eventType">{{eventType}}</option>
                     </select>
                 </div>
                 <div class="col-xs-6 col-lg-6 verticalspacing-5px" [ngClass]="{'has-error': displayMessage.eventName }">
-                    <input class="form-control"
-                            formControlName="eventName"
-                            type="text"
-                            placeholder="Event Name (required)" />
+                    <input class="form-control" formControlName="eventName" type="text" placeholder="Event Name (required)" />
                     <span class="help-block" *ngIf="displayMessage.eventName">{{displayMessage.eventName}}</span>
                 </div>
             </div>
 
             <div name="Event_Start_End" class="form-group">
                 <div class="col-xs-6 col-lg-6 verticalspacing-5px">
-                    <input class="form-control"
-                            formControlName="eventStart" 
-                            type="date"
-                            name="eventStart" />
+                    <input class="form-control" formControlName="eventStart" type="date" />
                 </div>
                 <div class="col-xs-6 col-lg-6 verticalspacing-5px">
-                    <input class="form-control"
-                            formControlName="eventEnd" 
-                            type="date"
-                            name="eventEnd" />
+                    <input class="form-control" formControlName="eventEnd" type="date" />
                 </div>
             </div>
 
             <div name="Event_City_State_Country" class="form-group col-xs-6 col-lg-6">
                 <div class="verticalspacing-5px" >
-                    <input class="form-control"
-                            formControlName="eventCity"
-                            type="text"
-                            placeholder="City Name"
-                            name="eventCity"/>
+                    <input class="form-control" formControlName="eventCity" type="text" placeholder="City Name" />
+                    <span class="help-block" *ngIf="displayMessage.eventCity">{{displayMessage.eventCity}}</span>
                 </div>
                 <div class="verticalspacing-5px">
-                    <input class="form-control"
-                            formControlName="eventState"
-                            type="text"
-                            placeholder="State Name"
-                            name="eventState"/>
+                    <input class="form-control" formControlName="eventState" type="text" placeholder="State Name" />
+                    <span class="help-block" *ngIf="displayMessage.eventState">{{displayMessage.eventState}}</span>
                 </div>
                 <div class="verticalspacing-5px">
-                    <input class="form-control"
-                            formControlName="eventCountry"
-                            type="text"
-                            placeholder="Country Name"
-                            name="eventCountry"/>
+                    <input ngui-auto-complete [source]="eventCountries" class="form-control" formControlName="eventCountry" type="text" placeholder="Country Name" />
+                    <span class="help-block" *ngIf="displayMessage.eventCountry">{{displayMessage.eventCountry}}</span>
                 </div>
             </div>
 
             <div name="Event_Cost_Comment" class="form-group col-xs-6 col-lg-6">
                 <div class="verticalspacing-5px">
-                    <input class="form-control"
-                            formControlName="eventCost"
-                            type="text"
-                            placeholder="Cost"
-                            name="eventCost"/>
+                    <input class="form-control" formControlName="eventCost" type="text" placeholder="Cost" />
                 </div>
                 <div class="verticalspacing-5px">
-                    <textarea class="form-control"
-                            formControlName="eventComment"
-                            placeholder="Comments"
-                            name="eventComment"
-                            cols="20"
-                            rows="3"></textarea>
+                    <textarea class="form-control" formControlName="eventComment" placeholder="Comments" cols="20" rows="3"></textarea>
                 </div>
             </div>
 
@@ -97,44 +69,40 @@
 
         </fieldset>
     </div>
+
     <div class="panel-footer" style="position: fixed; bottom: 0px; width: 100%; height: 50px;" *ngIf="editMode">
         <div class="form-group">
-            <button class="btn btn-primary"
-                    type="submit"
-                    style="width:80px;margin-right:10px"
-                    [disabled]='!eventForm.valid'>
+            <button class="btn btn-primary" type="submit" [disabled]='!eventForm.valid'>
                 Save
             </button>
-            <a *ngIf="eventIdFromRouter > 0" 
-                class="btn btn-default"
-                style="width:80px"
-                (click)="DeleteButtonClick()">
+            <button *ngIf="eventIdFromRouter > 0" class="btn btn-default" (click)="DeleteButtonClick()">
                 Delete
-            </a>
-            <a class="btn btn-default"
-                style="width:80px"
-                (click)="EventListButtonClick()">
+            </button>
+            <button class="btn btn-default" (click)="EventListButtonClick()">
                 EventList
-            </a>
-            <a *ngIf="eventIdFromRouter === 0"
-                class="btn btn-default"
-                style="width:80px"
-                (click)="GenerateButtonClick()">
+            </button>
+            <a *ngIf="eventIdFromRouter === 0" class="btn btn-default" (click)="GenerateButtonClick()">
                 Generate
             </a>
             <span class='has-error' *ngIf='statusMessage'>
                 {{statusMessage}}
             </span>
+            <button class="btn btn-default" [routerLink]="['/about']" style="float: right">
+                About 
+            </button>
         </div>
     </div>
 
     <div class='panel-footer' style="position: fixed; bottom: 0px; width: 100%; height: 50px;" *ngIf="!editMode">
-        <button class="btn btn-default" [routerLink]="['/list']" style="width:80px">
+        <button class="btn btn-default" [routerLink]="['/list']" >
             Back
         </button>
-        <a class="btn btn-primary" (click)="EditButtonClick()" style="width:80px;margin-left:10px">
+        <button class="btn btn-primary" (click)="EditButtonClick()" >
             Edit
-        </a>
+        </button>
+        <button class="btn btn-default" [routerLink]="['/about']" style="float: right">
+            About 
+        </button>
     </div>
 
 </form>

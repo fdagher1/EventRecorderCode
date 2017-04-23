@@ -8,7 +8,7 @@ import { ServiceAuth } from './service-auth.service';
         <div class='panel panel-primary'>
         
             <div class='panel-heading' style="position: fixed; width: 100%; height: 40px; margin-top: 0px; z-index: 1;">
-                <a [routerLink]="['']" style="color:white;text-decoration:none;margin: 20;"> {{pageTitle}} </a>
+                <a [routerLink]="['']" style="font:16;color:white;text-decoration:none;margin:20;"> {{pageTitle}} </a>
 
                 <button class="btn btn-default btn-xs" style="float: right;" (click)="serviceauth.login()" *ngIf="!serviceauth.authenticated()">Log In</button>
                 <button class="btn btn-default btn-xs" style="float: right;" (click)="serviceauth.logout()" *ngIf="serviceauth.authenticated() && serviceauth.userProfile">Log Out {{serviceauth.userProfile.nickname}}</button>

@@ -1,4 +1,11 @@
 
+<style>
+label {
+    margin-bottom: 0px;
+}
+
+</style>
+
 <div class='panel-body'>
     <div class='row' style="margin-bottom:4px">
         <div class='col-md-4'>
@@ -10,22 +17,30 @@
         {{errorMessage}}
     </div>
 
-    <div class='table-responsive'>
-        <table class='table' *ngIf='events && events.length'>
-            <thead>
-                <tr>
-                    <th class="col-xs-6 col-lg-6">Event Name</th>
-                    <th class="col-xs-6 col-lg-6">Event Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor='let event of events | pipeeventFilter:listFilter'>
-                    <td><a [routerLink]="['/edit', event.id]">{{event.eventName}}</a></td>
-                    <td>{{event.eventType}}</td>
-                </tr>
-            </tbody>
-        </table>   
-    </div>
+
+    <table class='table' *ngIf='events && events.length'>
+        <thead>
+            <tr>
+                <th class="col-xs-6 col-sm-2"><label (click)="headerClicked($event)" name="eventStart">Event Start</label></th>
+                <th class="col-xs-6 col-sm-2"><label (click)="headerClicked($event)" name="eventName">Event Name</label></th>
+                <th class="col-xs-6 col-sm-2"><label (click)="headerClicked($event)" name="eventType">Event Type</label></th>
+                <th class="col-xs-6 col-sm-2 hidden-xs"><label (click)="headerClicked($event)" name="eventCity">Event City</label></th>
+                <th class="col-xs-6 col-sm-2 hidden-xs"><label (click)="headerClicked($event)" name="eventCountry">Event City</label></th>
+                <th class="col-xs-6 col-sm-2 hidden-xs"><label (click)="headerClicked($event)" name="eventCost">Event Cost</label></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let event of events | pipeeventFilter:listFilter'>
+                <td class="col-xs-6 col-sm-2">{{event.eventStart}}</td>
+                <td class="col-xs-6 col-sm-2"><a [routerLink]="['/edit', event.id]">{{event.eventName}}</a></td>
+                <td class="col-xs-6 col-sm-2">{{event.eventType}}</td>
+                <td class="col-xs-6 col-sm-2 hidden-xs">{{event.eventCity}}</td>
+                <td class="col-xs-6 col-sm-2 hidden-xs">{{event.eventCountry}}</td>
+                <td class="col-xs-6 col-sm-2 hidden-xs">{{event.eventCost}}</td>
+            </tr>
+        </tbody>
+    </table>   
+
 </div>
 
 <div class="panel-footer" style="position: fixed; bottom: 0px; width: 100%; height: 50px;">
