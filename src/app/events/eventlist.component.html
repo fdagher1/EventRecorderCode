@@ -21,9 +21,9 @@ label {
     <table class='table' *ngIf='events && events.length'>
         <thead>
             <tr>
-                <th class="col-xs-6 col-sm-2"><label (click)="headerClicked($event)" name="eventStart">Event Start</label></th>
                 <th class="col-xs-6 col-sm-2"><label (click)="headerClicked($event)" name="eventName">Event Name</label></th>
                 <th class="col-xs-6 col-sm-2"><label (click)="headerClicked($event)" name="eventType">Event Type</label></th>
+                <th class="col-xs-6 col-sm-2 hidden-xs"><label (click)="headerClicked($event)" name="eventStart">Event Start</label></th>
                 <th class="col-xs-6 col-sm-2 hidden-xs"><label (click)="headerClicked($event)" name="eventCity">Event City</label></th>
                 <th class="col-xs-6 col-sm-2 hidden-xs"><label (click)="headerClicked($event)" name="eventCountry">Event City</label></th>
                 <th class="col-xs-6 col-sm-2 hidden-xs"><label (click)="headerClicked($event)" name="eventCost">Event Cost</label></th>
@@ -31,9 +31,9 @@ label {
         </thead>
         <tbody>
             <tr *ngFor='let event of events | pipeeventFilter:listFilter'>
-                <td class="col-xs-6 col-sm-2">{{event.eventStart}}</td>
                 <td class="col-xs-6 col-sm-2"><a [routerLink]="['/edit', event.id]">{{event.eventName}}</a></td>
                 <td class="col-xs-6 col-sm-2">{{event.eventType}}</td>
+                <td class="col-xs-6 col-sm-2 hidden-xs">{{event.eventStart}}</td>
                 <td class="col-xs-6 col-sm-2 hidden-xs">{{event.eventCity}}</td>
                 <td class="col-xs-6 col-sm-2 hidden-xs">{{event.eventCountry}}</td>
                 <td class="col-xs-6 col-sm-2 hidden-xs">{{event.eventCost}}</td>

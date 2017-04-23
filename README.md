@@ -38,6 +38,9 @@ Code repository for EventRecorder
 23 - Adding sorting capability for the EventList view
 24 - Added key attributes to the EventList view
 
+**v0.3.4**
+25 - Bug fix: Event data column in EventList did not hide properly when site accessed from a small device
+
 **Future plans**
 Enhancement:
 Modify eventedit.html layout to look more user friendly (lables, etc..)
