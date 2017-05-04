@@ -43,7 +43,10 @@ Code repository for EventRecorder
 
 **v0.3.5**<br>
 26 - Filtering in EventList is now expanded from Name only to include City, State, Country, and Comment <br>
-27 - Moved from using CD version of bootstrap.css to the local one<br>
+27 - Moved from using CDN version of bootstrap.css to the local one<br>
+
+**v0.3.6**<br>
+28 - Reverted back to using bootstrap from CDN 
 
 **Future plans**<br>
 Enhancement:<br>
