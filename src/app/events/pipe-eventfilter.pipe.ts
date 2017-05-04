@@ -18,7 +18,29 @@ export class PipeEventFilter implements PipeTransform {
         
         if ( filterBy )
         {
-            return value.filter((event: IEvent) => event.eventName.toLocaleLowerCase().indexOf(filterBy) !== -1 );
+            /*return value.filter(function(event: IEvent) { 
+                return event.eventName.toLocaleLowerCase().indexOf(filterBy) !== -1;
+            });*/
+
+            let eventarray: IEvent[] = [];
+            for (let event of value) {
+                if (event.eventName.toLocaleLowerCase().indexOf(filterBy) !== -1) {
+                    eventarray.push(event);
+                }
+                else if (event.eventCity.toLocaleLowerCase().indexOf(filterBy) !== -1) {
+                    eventarray.push(event);
+                }
+                else if (event.eventState.toLocaleLowerCase().indexOf(filterBy) !== -1) {
+                    eventarray.push(event);
+                }
+                else if (event.eventCountry.toLocaleLowerCase().indexOf(filterBy) !== -1) {
+                    eventarray.push(event);
+                }
+                else if (event.eventComment.toLocaleLowerCase().indexOf(filterBy) !== -1) {
+                    eventarray.push(event);
+                }
+            }
+            return eventarray;
         }
         else
         {

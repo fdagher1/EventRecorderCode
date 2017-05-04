@@ -33,7 +33,7 @@ label {
             <tr *ngFor='let event of events | pipeeventFilter:listFilter'>
                 <td class="col-xs-6 col-sm-2"><a [routerLink]="['/edit', event.id]">{{event.eventName}}</a></td>
                 <td class="col-xs-6 col-sm-2">{{event.eventType}}</td>
-                <td class="col-xs-6 col-sm-2 hidden-xs">{{event.eventStart}}</td>
+                <td class="col-xs-6 col-sm-2 hidden-xs">{{event.eventStart | date:'fullDate'}}</td>
                 <td class="col-xs-6 col-sm-2 hidden-xs">{{event.eventCity}}</td>
                 <td class="col-xs-6 col-sm-2 hidden-xs">{{event.eventCountry}}</td>
                 <td class="col-xs-6 col-sm-2 hidden-xs">{{event.eventCost}}</td>

@@ -41,18 +41,19 @@ Code repository for EventRecorder
 **v0.3.4**
 25 - Bug fix: Event data column in EventList did not hide properly when site accessed from a small device
 
+**v0.3.5**
+26 - Filtering in EventList is now expanded from Name only to include City, State, Country, and Comment 
+27 - Moved from using CD version of bootstrap.css to the local one
+
 **Future plans**
 Enhancement:
-Modify eventedit.html layout to look more user friendly (lables, etc..)
+Upgrade to Angular 4
 Add individual symbols for each input control to indicate it has valid data (bootstrap guide shows how)
 Add route guards
 Store data in the backend: Check how to pull username or id and add to the Event model
 Add validators for some of the event attribute controls (not sure which yet)
 
 Bugs:
-Sorting in EventList is always done by name 
 When a browser automatically fills fields, the save button remains greyed out
 Downloading the app the first time takes a long time
-
-Known issues:
 Date input elements appear small on iPhone only
