@@ -1,7 +1,7 @@
 # EventRecorderCode
 Code repository for EventRecorder
 
-**v0.1.0**
+**v0.1.0**<br>
 1 - Auth0 authentication added (github)
 2 - Created Event module
 3 - Moved lower buttons to the top
